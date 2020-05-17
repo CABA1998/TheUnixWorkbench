@@ -1,3 +1,3 @@
-README.md: README.md
-	README.md touch
-	README.md echo "# Unix-Project"  
+README.md:
+	touch RADME.md
+	echo "hola">>README.md
