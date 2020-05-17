@@ -1,23 +1,25 @@
+#!user/bin/env bash
 #The Unix Workbench
 #Information input function
-function entervalue {
-	echo "Enter a number with your guess on how many files this directory contains?"
-        read number
+function getvalue {
+	echo "Please enter the number of files you think this directory contains"
+        read files
 }
-
-
+#Number of files in the directory
+answer=$(ls -l |grep "^-"|wc -l)
+#Breakdown variable
 error=0
 while [[ $error -eq 0 ]]
 do
-	entervalue
-	if [[ $number -eq 3 ]]
+	getvalue
+	if [[ $files -eq answer ]]
 	then
 		error=1
-		echo "Congratulations, you've entered the right number."
-	elif [[ $number -lt 3 ]]
+		echo "You guessed it right"
+	elif [[ $files -lt answer ]]
 	then
-		echo "Your number is lower"
+		echo "Please try again, your number is lower"
 	else
-		echo "Your number is higher"
+		echo "Please try again, your number is higher"
 	fi
 done
